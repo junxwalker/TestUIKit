@@ -10,17 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
-    let blueLayer = CALayer()
-    let uiview = UIView()
-    let button = UIButton()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        let vc = avPlayer()
+        let vc = CoreImageFilter()
         self.view.addSubview(vc.view)
         self.addChildViewController(vc)
     }

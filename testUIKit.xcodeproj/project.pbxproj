@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		110D724F1E6680C500B7E095 /* avPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110D724E1E6680C500B7E095 /* avPlayer.swift */; };
+		110D72511E66E1D700B7E095 /* baseui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110D72501E66E1D700B7E095 /* baseui.swift */; };
+		110D72531E66E34400B7E095 /* CoreImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110D72521E66E34400B7E095 /* CoreImageFilter.swift */; };
 		114D24F81E53FEB000892612 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D24F71E53FEB000892612 /* AppDelegate.swift */; };
 		114D24FA1E53FEB000892612 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D24F91E53FEB000892612 /* ViewController.swift */; };
 		114D24FD1E53FEB000892612 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 114D24FB1E53FEB000892612 /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		110D724E1E6680C500B7E095 /* avPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = avPlayer.swift; sourceTree = "<group>"; };
+		110D72501E66E1D700B7E095 /* baseui.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = baseui.swift; sourceTree = "<group>"; };
+		110D72521E66E34400B7E095 /* CoreImageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImageFilter.swift; sourceTree = "<group>"; };
 		114D24F41E53FEB000892612 /* testUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		114D24F71E53FEB000892612 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		114D24F91E53FEB000892612 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +48,8 @@
 			children = (
 				114D250B1E543A4F00892612 /* caLayer.swift */,
 				110D724E1E6680C500B7E095 /* avPlayer.swift */,
+				110D72501E66E1D700B7E095 /* baseui.swift */,
+				110D72521E66E34400B7E095 /* CoreImageFilter.swift */,
 			);
 			name = test;
 			sourceTree = "<group>";
@@ -153,7 +159,9 @@
 			files = (
 				114D24FA1E53FEB000892612 /* ViewController.swift in Sources */,
 				110D724F1E6680C500B7E095 /* avPlayer.swift in Sources */,
+				110D72511E66E1D700B7E095 /* baseui.swift in Sources */,
 				114D250C1E543A4F00892612 /* caLayer.swift in Sources */,
+				110D72531E66E34400B7E095 /* CoreImageFilter.swift in Sources */,
 				114D24F81E53FEB000892612 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
