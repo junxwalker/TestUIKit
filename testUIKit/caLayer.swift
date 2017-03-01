@@ -8,6 +8,13 @@
 
 import UIKit
 
+
+/*
+ 
+ calayer 隐式动画测试.   
+ 
+ */
+
 class caLayer: UIViewController {
     
     

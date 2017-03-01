@@ -12,7 +12,6 @@
 		114D24FD1E53FEB000892612 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 114D24FB1E53FEB000892612 /* Main.storyboard */; };
 		114D24FF1E53FEB000892612 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 114D24FE1E53FEB000892612 /* Assets.xcassets */; };
 		114D25021E53FEB000892612 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 114D25001E53FEB000892612 /* LaunchScreen.storyboard */; };
-		114D250A1E543A1200892612 /* uiGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D25091E543A1200892612 /* uiGestureRecognizer.swift */; };
 		114D250C1E543A4F00892612 /* caLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D250B1E543A4F00892612 /* caLayer.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +23,6 @@
 		114D24FE1E53FEB000892612 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		114D25011E53FEB000892612 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		114D25031E53FEB000892612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		114D25091E543A1200892612 /* uiGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uiGestureRecognizer.swift; sourceTree = "<group>"; };
 		114D250B1E543A4F00892612 /* caLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = caLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		110D724D1E66803E00B7E095 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				114D250B1E543A4F00892612 /* caLayer.swift */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
 		114D24EB1E53FEB000892612 = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +70,7 @@
 				114D24FE1E53FEB000892612 /* Assets.xcassets */,
 				114D25001E53FEB000892612 /* LaunchScreen.storyboard */,
 				114D25031E53FEB000892612 /* Info.plist */,
-				114D25091E543A1200892612 /* uiGestureRecognizer.swift */,
-				114D250B1E543A4F00892612 /* caLayer.swift */,
+				110D724D1E66803E00B7E095 /* test */,
 			);
 			path = testUIKit;
 			sourceTree = "<group>";
@@ -146,7 +151,6 @@
 				114D24FA1E53FEB000892612 /* ViewController.swift in Sources */,
 				114D250C1E543A4F00892612 /* caLayer.swift in Sources */,
 				114D24F81E53FEB000892612 /* AppDelegate.swift in Sources */,
-				114D250A1E543A1200892612 /* uiGestureRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
