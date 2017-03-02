@@ -16,6 +16,7 @@
 		114D24FF1E53FEB000892612 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 114D24FE1E53FEB000892612 /* Assets.xcassets */; };
 		114D25021E53FEB000892612 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 114D25001E53FEB000892612 /* LaunchScreen.storyboard */; };
 		114D250C1E543A4F00892612 /* caLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D250B1E543A4F00892612 /* caLayer.swift */; };
+		11C79CA61E67F4C0004A060E /* avPlayer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C79CA51E67F4C0004A060E /* avPlayer2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		114D25011E53FEB000892612 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		114D25031E53FEB000892612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		114D250B1E543A4F00892612 /* caLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = caLayer.swift; sourceTree = "<group>"; };
+		11C79CA51E67F4C0004A060E /* avPlayer2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = avPlayer2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				114D250B1E543A4F00892612 /* caLayer.swift */,
 				110D724E1E6680C500B7E095 /* avPlayer.swift */,
+				11C79CA51E67F4C0004A060E /* avPlayer2.swift */,
 				110D72501E66E1D700B7E095 /* baseui.swift */,
 				110D72521E66E34400B7E095 /* CoreImageFilter.swift */,
 			);
@@ -160,6 +163,7 @@
 				114D24FA1E53FEB000892612 /* ViewController.swift in Sources */,
 				110D724F1E6680C500B7E095 /* avPlayer.swift in Sources */,
 				110D72511E66E1D700B7E095 /* baseui.swift in Sources */,
+				11C79CA61E67F4C0004A060E /* avPlayer2.swift in Sources */,
 				114D250C1E543A4F00892612 /* caLayer.swift in Sources */,
 				110D72531E66E34400B7E095 /* CoreImageFilter.swift in Sources */,
 				114D24F81E53FEB000892612 /* AppDelegate.swift in Sources */,
