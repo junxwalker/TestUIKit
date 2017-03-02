@@ -43,6 +43,12 @@ class VideoViewController: UIViewController {
     var startOffset: CGFloat = 0 // 開始拖拉時的移動量
     var tap: UITapGestureRecognizer! // Tap手勢，點一下回到最大
     var videoPlayer = AVPlayer() // 播放影片
+    
+    /*
+        junxwalker
+        这里设定有问题,  应该设定为 AVPlayerLayer 才对.
+        设定为 CALayer 也可以但是缺少 AVPlayerLayer 的功能
+    */
     var videoLayer: CALayer! // VideoPlayer Layer
     
     override func viewDidLoad() {
@@ -51,6 +57,13 @@ class VideoViewController: UIViewController {
         
         self.videoRectView.frame = CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width, height:200)
         self.view.addSubview(self.videoRectView)
+        /*
+            junxwalker
+            这里必需加上 videoRectView 与 view 的边界关系,  因为在下面拖拉缩放的部分, video缩放的大小位置是根据 videoRectView 而来.
+            而 videoRectView 的大小位置 则是因为边界绑定了view,所以系统会自动计算调整.
+         
+            这里的做法是利用ios autolayout 的功能自动计算了!
+        */
         
         // Do any additional setup after loading the view.
         // 拖拉手勢
@@ -62,6 +75,7 @@ class VideoViewController: UIViewController {
         // 建立 Layer (背景黑黑der)
         self.videoLayer = AVPlayerLayer(player: videoPlayer)
         self.videoLayer.backgroundColor = UIColor.black.cgColor
+        
         // Layer 加到最上面
         self.view.layer.addSublayer(videoLayer)
         // 不知道哪裡找來的影片連結
@@ -133,13 +147,19 @@ class VideoViewController: UIViewController {
             if width < minWidth { width = minWidth }
             
             let x = maxWidth - width // 用寬度算新 x 座標
-            
+            print("136 ---- ", UIScreen.main.bounds.width, UIScreen.main.bounds.height)
             self.view.frame = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: height)) // 合體
-            
+            print("view --- ", self.view.frame)
             //self.videoLayer.frame = self.videoRectView.frame
             CATransaction.begin() // 使用自動補間會跟不上拖拉速度
             CATransaction.setDisableActions(true) // 所以這邊要取消自動補間
+            /*
+                junxwalker
+                videoRectView 在SB中与 super view 边界绑定了,  所以上面设定 self.view.frame 时会跟着自动调整 videoRectView 的位置大小.
+                所以这里才可以利用 videoRectView.frame 取得正确的 self.videoLayer.frame
+            */
             self.videoLayer.frame = self.videoRectView.frame
+            print("videoRectView --- ", self.videoRectView.frame)
             CATransaction.commit() // 自己設定新的參數後要 commit
             
             break

@@ -17,6 +17,7 @@
 		114D25021E53FEB000892612 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 114D25001E53FEB000892612 /* LaunchScreen.storyboard */; };
 		114D250C1E543A4F00892612 /* caLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D250B1E543A4F00892612 /* caLayer.swift */; };
 		11C79CA61E67F4C0004A060E /* avPlayer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C79CA51E67F4C0004A060E /* avPlayer2.swift */; };
+		11C79CA81E68337A004A060E /* videoCapeture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C79CA71E68337A004A060E /* videoCapeture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		114D25031E53FEB000892612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		114D250B1E543A4F00892612 /* caLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = caLayer.swift; sourceTree = "<group>"; };
 		11C79CA51E67F4C0004A060E /* avPlayer2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = avPlayer2.swift; sourceTree = "<group>"; };
+		11C79CA71E68337A004A060E /* videoCapeture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = videoCapeture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 				11C79CA51E67F4C0004A060E /* avPlayer2.swift */,
 				110D72501E66E1D700B7E095 /* baseui.swift */,
 				110D72521E66E34400B7E095 /* CoreImageFilter.swift */,
+				11C79CA71E68337A004A060E /* videoCapeture.swift */,
 			);
 			name = test;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				11C79CA61E67F4C0004A060E /* avPlayer2.swift in Sources */,
 				114D250C1E543A4F00892612 /* caLayer.swift in Sources */,
 				110D72531E66E34400B7E095 /* CoreImageFilter.swift in Sources */,
+				11C79CA81E68337A004A060E /* videoCapeture.swift in Sources */,
 				114D24F81E53FEB000892612 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
