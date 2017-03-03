@@ -131,6 +131,9 @@ class VideoViewController: UIViewController {
             
             break
         case .changed:
+            /*
+                取得touch point 在全屏墓中的位置
+            */
             let position = gesture.location(in: self.view.superview) // 拖拉中，目前的觸控點
             
             self.offset = position.y - touchStartPoint.y // 位移
@@ -157,8 +160,14 @@ class VideoViewController: UIViewController {
                 junxwalker
                 videoRectView 在SB中与 super view 边界绑定了,  所以上面设定 self.view.frame 时会跟着自动调整 videoRectView 的位置大小.
                 所以这里才可以利用 videoRectView.frame 取得正确的 self.videoLayer.frame
+             
+                ***这里的做法可能有问题. 因为现在抓到的 self.videoRectView.frame 不是autolayer后的大小, 而是原始大小.
             */
             self.videoLayer.frame = self.videoRectView.frame
+            
+            
+            //self.videoLayer.frame = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: width / 16 * 9))
+            
             print("videoRectView --- ", self.videoRectView.frame)
             CATransaction.commit() // 自己設定新的參數後要 commit
             
@@ -173,6 +182,10 @@ class VideoViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func toMin() {

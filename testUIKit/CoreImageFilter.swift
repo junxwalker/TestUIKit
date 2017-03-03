@@ -14,55 +14,81 @@ class CoreImageFilter: UIViewController {
     
     typealias Filter = (CIImage) -> CIImage
 
-    func blur(radius: Double) -> Filter {
+    /*
+        CINoiseReduction          - 通过降低噪声的限定值来降低噪音。
+        Parameters:
+     
+        inputImage         A CIImage object whose display name is Image.
+        inputNoiseLevel    An NSNumber object whose attribute type is CIAttributeTypeScalar and whose display name is Noise Level.
+                            Default value: 0.02
+        inputSharpness     An NSNumber object whose attribute type is CIAttributeTypeScalar and whose display name is Sharpness.
+                            Default value: 0.40
+    */
+    
+    
+    // 中值濾波器 (Median Filter)  -> 去圖片雜點, 平滑和降噪.
+    // 计算一组邻近像素的平均数，然后用平均数替代每个像素的值。
+    func fn_Median_中值濾波器() -> Filter {
+        return { image in
+            let parametes = [
+                kCIInputImageKey: image
+                ] as [String : Any]
+            let filter = CIFilter(name: "CIMedianFilter", withInputParameters: parametes)
+            let outputImage = filter?.outputImage
+            return outputImage!
+        }
+    }
+    
+    //
+    func fn_blur_高斯模糊濾鏡(radius: Double) -> Filter {
         return { image in
             let parametes = [
                 kCIInputRadiusKey: radius,
                 kCIInputImageKey: image
             ] as [String : Any]
-            guard let filter = CIFilter(name: "CIGaussianBlur", withInputParameters: parametes) else { fatalError()}
-            guard let outputImage = filter.outputImage else { fatalError() }
-            return outputImage
-        }
-    }
-    
-    func colorGenerator(color: UIColor) -> Filter {
-        return { _ in
-            //let parameters = [kCIInputColorKey: color ]
-            //let filter = CIFilter(name: "CIConstantColorGenerator", withInputParameters: parameters)
-            
-            let filter = CIFilter(name:"CIConstantColorGenerator", withInputParameters: [kCIInputColorKey: CIColor(color: color)])
+            let filter = CIFilter(name: "CIGaussianBlur", withInputParameters: parametes)
             let outputImage = filter?.outputImage
-            print("colorGenerator: outputImage. ", outputImage!)
             return outputImage!
         }
     }
     
-    func compositeSourceOver(overlay: CIImage) -> Filter {
+    func fn_colorGenerator_顏色生成濾鏡(color: UIColor) -> Filter {
+        return { _ in
+            let filter = CIFilter(name:"CIConstantColorGenerator", withInputParameters: [kCIInputColorKey: CIColor(color: color)])
+            let outputImage = filter?.outputImage
+            return outputImage!
+        }
+    }
+    
+    func fn_compositeSourceOver_合成濾鏡(overlay: CIImage) -> Filter {
         return { image in
             let parameters = [
                 kCIInputBackgroundImageKey: image,
                 kCIInputImageKey: overlay
             ]
-            print("compositeSourceOver: image. ", image)
-            print("compositeSourceOver: overlay. ", overlay)
             let filter = CIFilter(name: "CISourceOverCompositing", withInputParameters: parameters)
             let outputImage = filter?.outputImage
-            print("compositeSourceOver: outputImage. ", outputImage!)
             let cropRect = image.extent
             let outImage2 = outputImage?.cropping(to: cropRect)
-            print("compositeSourceOver: outputImage.cropping ", outImage2!)
             return outImage2!
         }
     }
     
-    func colorOverlay(color: UIColor) -> Filter {
+    func fn_colorOverlay_顏色疊層濾鏡(color: UIColor) -> Filter {
         return { image in
-            print("colorOverlay: image. ", image)
-            let overlay = self.colorGenerator(color: color)(image)
-            print("colorOverlay: overlay.", overlay)
-            return self.compositeSourceOver(overlay: overlay)(image)
+            let overlay = self.fn_colorGenerator_顏色生成濾鏡(color: color)(image)
+            return self.fn_compositeSourceOver_合成濾鏡(overlay: overlay)(image)
         }
+    }
+    
+    func measure(title: String!, call: () -> Void) {
+        let startTime = CACurrentMediaTime()
+        call()
+        let endTime = CACurrentMediaTime()
+        if let title = title {
+            print("\(title): ")
+        }
+        print("Time - \(endTime - startTime)")
     }
     
     override func viewDidLoad() {
@@ -77,7 +103,7 @@ class CoreImageFilter: UIViewController {
         self.view.addSubview(picView)
         
        
-        guard let oldimage = UIImage(named: "001859") else {
+        guard let oldimage = UIImage(named: "002185") else {
             print("imageView doesn't have an image!")
             return
         }
@@ -89,19 +115,26 @@ class CoreImageFilter: UIViewController {
         //let ii = oldimage.cgImage
         let image =  CIImage(image: oldimage)!
         
-        let blurRadius = 5.0
-        let overlayColor = UIColor.white.withAlphaComponent(0.2)
         
-        let blurredImage = blur(radius: blurRadius)(image)
-        print("main: blurredImage. ",blurredImage)
-        let overlaidImage = colorOverlay(color: overlayColor)(blurredImage)
-        print("main: overlaidImage. ",overlaidImage)
-        let result = UIImage(ciImage: overlaidImage)
         
+        measure(title: "fn_濾鏡") {
+            //let blurRadius = 5.0
+            //let blurredImage = fn_blur_高斯模糊濾鏡(radius: blurRadius)(image)
+            //print("main: blurredImage. ",blurredImage)
+
+            //let overlayColor = UIColor.white.withAlphaComponent(0.2)
+            //let overlaidImage = fn_colorOverlay_顏色疊層濾鏡(color: overlayColor)(blurredImage)
+            //print("main: overlaidImage. ",overlaidImage)
+            
+            let medianImage = fn_Median_中值濾波器()(image)
+        
+            let result = UIImage(ciImage: medianImage)
+            picView.image = result
+        }
         //let output = context.createCGImage(overlaidImage, from: overlaidImage.extent)
         //let result = UIImage(cgImage: output!)
 
-        picView.image = result
+        
         
 
     }

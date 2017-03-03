@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        let vc = VideoViewController()
+        let vc = CoreImageFilter()
         self.view.addSubview(vc.view)
         self.addChildViewController(vc)
     }
