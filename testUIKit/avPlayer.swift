@@ -19,6 +19,9 @@ class avPlayer: UIViewController {
     
     var ti = 0
     
+    //var capView = UIImageView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        /*
@@ -30,6 +33,12 @@ class avPlayer: UIViewController {
         } (UIView())
         self.view.addSubview(upView)
         */
+        
+        
+
+
+        
+        
         let url = URL(string: "http://bos.nj.bpc.baidu.com/tieba-smallvideo/11772_3c435014fb2dd9a5fd56a57cc369f6a0.mp4")
         playerItem = AVPlayerItem(url: url!)
         self.avplayer = AVPlayer(playerItem: playerItem)
@@ -42,10 +51,37 @@ class avPlayer: UIViewController {
         self.link.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
         
         self.avplayer.play()
+        
+        //capView.backgroundColor = UIColor.blue
+        //capView.frame =  CGRect(x: 0, y: 250, width:UIScreen.main.bounds.width, height:200)
+        //self.view.addSubview(capView)
+        
     }
     
+    
+    
     func update(){
-        ti = ti + 1
+        
+        /*
+        CGRect rect = view.bounds;
+        UIGraphicsBeginImageContext(rect.size);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [self.view.layer renderInContext:context];
+        UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+ */
+        /*
+        let rect = CGRect(x: 0, y: 0, width:300, height:300)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        self.view.layer.render(in: context!)
+        self.capView.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        */
+        
+        //let a = snapView(targetView: self.view)
+        //self.capView.image =  a //UIImage(named: "002185")  //snapView(targetView: self.view)
+        //ti = ti + 1
         
         CATransaction.begin()
         CATransaction.setAnimationDuration(5)

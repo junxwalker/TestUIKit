@@ -9,22 +9,44 @@
 import UIKit
 import CoreImage
 
+/*
+
+    滤镜使用测试.     使用 Functional Programming 写法. 
+ 
+ 关于CoreImage
+ 
+ Core Image 介绍
+ https://objccn.io/issue-21-6/
+ ios 开发者工具
+ https://developer.apple.com/downloads/index.action?name=Graphics
+ 
+ Core Image 的权威文档集。
+ https://developer.apple.com/reference/coreimage#//apple_ref/doc/uid/TP40001171
+ Core Image 提供的图像滤镜的完整列表，以及用法示例
+ https://developer.apple.com/library/content/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/uid/TP40004346
+ 
+ 
+ 
+    重点:
+    kCIInputImageKey 等等的關鍵字為 濾鏡使用時的參數名,  但ios系統只定義了少部分所以濾鏡的使用分為兩種.
+    A) 系統已定義參數名
+        let sepiaFilter = CIFilter(name: "CISepiaTone")
+        sepiaFilter?.setValue(coreImage, forKey: kCIInputImageKey)
+        sepiaFilter?.setValue(1, forKey: kCIInputIntensityKey)          <- 參數:kCIInputIntensityKey : 已定義
+    B) 參數名未在系統中定義
+        let sepiaFilter = CIFilter(name: "CIColorPosterize")
+        sepiaFilter?.setValue(coreImage, forKey: kCIInputImageKey)      <- 參數:kCIInputImageKey : 已定義
+        sepiaFilter?.setValuesForKeys([ "inputLevels" : 3])             <- 參數 inputLevels : 未定義
+ 
+ 
+
+*/
+
 
 class CoreImageFilter: UIViewController {
     
     typealias Filter = (CIImage) -> CIImage
 
-    /*
-        CINoiseReduction          - 通过降低噪声的限定值来降低噪音。
-        Parameters:
-     
-        inputImage         A CIImage object whose display name is Image.
-        inputNoiseLevel    An NSNumber object whose attribute type is CIAttributeTypeScalar and whose display name is Noise Level.
-                            Default value: 0.02
-        inputSharpness     An NSNumber object whose attribute type is CIAttributeTypeScalar and whose display name is Sharpness.
-                            Default value: 0.40
-    */
-    
     
     // 中值濾波器 (Median Filter)  -> 去圖片雜點, 平滑和降噪.
     // 计算一组邻近像素的平均数，然后用平均数替代每个像素的值。
@@ -39,7 +61,6 @@ class CoreImageFilter: UIViewController {
         }
     }
     
-    //
     func fn_blur_高斯模糊濾鏡(radius: Double) -> Filter {
         return { image in
             let parametes = [
@@ -94,6 +115,7 @@ class CoreImageFilter: UIViewController {
     override func viewDidLoad() {
         
         
+        
         let picView:UIImageView = {
             $0.backgroundColor = UIColor.red
             $0.frame = CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width, height:UIScreen.main.bounds.height)
@@ -108,16 +130,35 @@ class CoreImageFilter: UIViewController {
             return
         }
         
+        var result:UIImage?
         
-        //let openGLContext = EAGLContext(api: .openGLES2)
-        //let context = CIContext(eaglContext: openGLContext!)
+        measure(title: "fn_濾鏡處理_時間計算") {
+            //let ii = oldimage.cgImage
+            let image =  CIImage(image: oldimage)!
+            //let blurRadius = 5.0
+            //let blurredImage = fn_blur_高斯模糊濾鏡(radius: blurRadius)(image)
+            //print("main: blurredImage. ",blurredImage)
+            
+            //let overlayColor = UIColor.white.withAlphaComponent(0.2)
+            //let overlaidImage = fn_colorOverlay_顏色疊層濾鏡(color: overlayColor)(blurredImage)
+            //print("main: overlaidImage. ",overlaidImage)
+            
+            let medianImage = fn_Median_中值濾波器()(image)
+            
+            result = UIImage(ciImage: medianImage)
+        }
         
-        //let ii = oldimage.cgImage
-        let image =  CIImage(image: oldimage)!
+        measure(title: "fn_濾鏡處理_使用openGL加速耗時計算") {
+            let openGLContext = EAGLContext(api: .openGLES2)
+            let context = CIContext(eaglContext: openGLContext!)
+            
+        
+            //let ii = oldimage.cgImage
+            let image =  CIImage(image: oldimage)!
         
         
         
-        measure(title: "fn_濾鏡") {
+        
             //let blurRadius = 5.0
             //let blurredImage = fn_blur_高斯模糊濾鏡(radius: blurRadius)(image)
             //print("main: blurredImage. ",blurredImage)
@@ -128,14 +169,14 @@ class CoreImageFilter: UIViewController {
             
             let medianImage = fn_Median_中值濾波器()(image)
         
-            let result = UIImage(ciImage: medianImage)
-            picView.image = result
+            //let result = UIImage(ciImage: medianImage)
+            //picView.image = result
+        
+            let output = context.createCGImage(medianImage, from: medianImage.extent)
+            result = UIImage(cgImage: output!)
         }
-        //let output = context.createCGImage(overlaidImage, from: overlaidImage.extent)
-        //let result = UIImage(cgImage: output!)
 
-        
-        
+        picView.image = result
 
     }
     
@@ -212,6 +253,17 @@ class CoreImageFilter: UIViewController {
         }
  
         
+    }
+    
+    /**
+     查看所有内置滤镜
+     */
+    func showAllFilters() {
+        let filterNames = CIFilter.filterNames(inCategory: kCICategoryBuiltIn)
+        for filterName in filterNames {
+            let filter = CIFilter(name: filterName)
+            print(filterName, filter?.attributes as Any)
+        }
     }
     
     override func didReceiveMemoryWarning() {
