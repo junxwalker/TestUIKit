@@ -83,6 +83,10 @@ class avPlayer: UIViewController {
         //self.capView.image =  a //UIImage(named: "002185")  //snapView(targetView: self.view)
         //ti = ti + 1
         
+        //let ace = playerLayer.contents
+        //capView.layer.contents = ace
+        
+        
         CATransaction.begin()
         CATransaction.setAnimationDuration(5)
         
