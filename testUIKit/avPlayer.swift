@@ -19,7 +19,7 @@ class avPlayer: UIViewController {
     
     var ti = 0
     
-    //var capView = UIImageView()
+    var capView = UIImageView()
     
     
     override func viewDidLoad() {
@@ -52,9 +52,9 @@ class avPlayer: UIViewController {
         
         self.avplayer.play()
         
-        //capView.backgroundColor = UIColor.blue
-        //capView.frame =  CGRect(x: 0, y: 250, width:UIScreen.main.bounds.width, height:200)
-        //self.view.addSubview(capView)
+        capView.backgroundColor = UIColor.blue
+        capView.frame =  CGRect(x: 0, y: 250, width:UIScreen.main.bounds.width, height:200)
+        self.view.addSubview(capView)
         
     }
     
@@ -83,9 +83,11 @@ class avPlayer: UIViewController {
         //self.capView.image =  a //UIImage(named: "002185")  //snapView(targetView: self.view)
         //ti = ti + 1
         
-        //let ace = playerLayer.contents
-        //capView.layer.contents = ace
-        
+        let ace = playerLayer.contents
+        capView.layer.contents = ace
+        capView.layer.frame = capView.frame
+        capView.setNeedsDisplay()
+
         
         CATransaction.begin()
         CATransaction.setAnimationDuration(5)
