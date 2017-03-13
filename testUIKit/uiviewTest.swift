@@ -51,7 +51,7 @@ class uiviewTest: UIViewController {
         
         gradientLayer.frame = self.view.bounds
         
-        gradientLayer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
+        gradientLayer.colors = [ UIColor.red.cgColor,UIColor.green.cgColor,UIColor.blue.cgColor]
         
         self.view.layer.addSublayer(gradientLayer)
     }
@@ -74,8 +74,8 @@ class Test_View: UIView {
         super.init(coder: aDecoder)!
     }
     override func draw(_ rect: CGRect) {
-        let h = rect.height
-        let w = rect.width
+        //let h = rect.height
+        //let w = rect.width
         let color:UIColor = UIColor.yellow
         
         //let drect = CGRect(x: (w * 0.25),y: (h * 0.25),width: (w * 0.5),height: (h * 0.5))
@@ -96,3 +96,6 @@ class Test_View: UIView {
     }
     
 }
+
+
+
