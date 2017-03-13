@@ -10,6 +10,20 @@ import Foundation
 
 import UIKit
 
+/*
+ 
+ EEEE：表示星期几（如 Monday）。使用 1-3 个字母表示周几的缩略写法。
+ MMMM：月份的全写（如 October）。使用 1-3 个字母表示月份的缩略写法。
+ dd：表示一个月里面日期的数字（如 09 或 15）。
+ yyyy：4 个数字表示的年（如 2015）。
+ HH：2 个数字表示的小时（如 08 或 19）。
+ mm：2 个数字表示的分钟（如 05 或者 54）。
+ ss：2 个数字表示的秒。
+ zzz：3 个字母表示的时区（如 GMT）。
+ GGG：BC 或者 AD。
+ 
+ 
+ */
 
 
 class dateTimeTest: UIViewController {
