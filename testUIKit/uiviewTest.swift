@@ -14,7 +14,7 @@ import CoreImage
 class uiviewTest: UIViewController {
     
     
-    let f = Test_View(frame: CGRect(x:100, y:180, width:100, height:20))
+    let f = Test_View(frame: CGRect(x:100, y:180, width:200, height:100))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +73,29 @@ class Test_View: UIView {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let currentPoint = touch.location(in: self)
+            // do something with your currentPoint
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let currentPoint = touch.location(in: self)
+            // do something with your currentPoint
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let currentPoint = touch.location(in: self)
+            // do something with your currentPoint
+        }
+    }
+    
+    
     override func draw(_ rect: CGRect) {
         //let h = rect.height
         //let w = rect.width
@@ -89,7 +112,7 @@ class Test_View: UIView {
         //bpath.lineCapStyle =  kCALineCapRound //端点样式(枚举)
         bpath.stroke()          //渲染路径
         //UIColor.red.setFill() //设置填充颜色(不常用)
-        //bpath.fill()            //渲染填充部分
+        bpath.fill()            //渲染填充部分
         
         NSLog("drawRect has updated the view")
         
