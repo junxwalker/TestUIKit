@@ -60,7 +60,6 @@ class jxNSUserDefaults {
     func setStringData(_ key:String, datais data:String) {
         UserDefaults.standard.set(data, forKey: key)
         UserDefaults.standard.synchronize()
-        
     }
     
 

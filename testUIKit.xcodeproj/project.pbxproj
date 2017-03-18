@@ -23,6 +23,8 @@
 		114D24FF1E53FEB000892612 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 114D24FE1E53FEB000892612 /* Assets.xcassets */; };
 		114D25021E53FEB000892612 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 114D25001E53FEB000892612 /* LaunchScreen.storyboard */; };
 		114D250C1E543A4F00892612 /* caLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D250B1E543A4F00892612 /* caLayer.swift */; };
+		11B0CDC51E7BFF800074A5AF /* uiCollectionViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B0CDC41E7BFF800074A5AF /* uiCollectionViewTest.swift */; };
+		11B0CDC91E7D4F450074A5AF /* cameraTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B0CDC81E7D4F450074A5AF /* cameraTest.swift */; };
 		11C79CA61E67F4C0004A060E /* avPlayer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C79CA51E67F4C0004A060E /* avPlayer2.swift */; };
 		11C79CA81E68337A004A060E /* videoCapeture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C79CA71E68337A004A060E /* videoCapeture.swift */; };
 		11D8877E1E69A27A001D78DF /* screenShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8877D1E69A27A001D78DF /* screenShot.swift */; };
@@ -48,6 +50,8 @@
 		114D25011E53FEB000892612 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		114D25031E53FEB000892612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		114D250B1E543A4F00892612 /* caLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = caLayer.swift; sourceTree = "<group>"; };
+		11B0CDC41E7BFF800074A5AF /* uiCollectionViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uiCollectionViewTest.swift; sourceTree = "<group>"; };
+		11B0CDC81E7D4F450074A5AF /* cameraTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraTest.swift; sourceTree = "<group>"; };
 		11C79CA51E67F4C0004A060E /* avPlayer2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = avPlayer2.swift; sourceTree = "<group>"; };
 		11C79CA71E68337A004A060E /* videoCapeture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = videoCapeture.swift; sourceTree = "<group>"; };
 		11D8877D1E69A27A001D78DF /* screenShot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = screenShot.swift; sourceTree = "<group>"; };
@@ -81,8 +85,8 @@
 				11365AC51E77827700F476E8 /* nsUserDefaultsTest.swift */,
 				1148F0641E6EC854009E3853 /* presentVC_Test.swift */,
 				11D8877D1E69A27A001D78DF /* screenShot.swift */,
-				11D8877F1E6A8CD2001D78DF /* uiviewTest.swift */,
 				11C79CA71E68337A004A060E /* videoCapeture.swift */,
+				11B0CDC81E7D4F450074A5AF /* cameraTest.swift */,
 			);
 			name = test;
 			sourceTree = "<group>";
@@ -113,8 +117,18 @@
 				114D25001E53FEB000892612 /* LaunchScreen.storyboard */,
 				114D25031E53FEB000892612 /* Info.plist */,
 				110D724D1E66803E00B7E095 /* test */,
+				11B0CDC31E7BFF490074A5AF /* testUI */,
 			);
 			path = testUIKit;
+			sourceTree = "<group>";
+		};
+		11B0CDC31E7BFF490074A5AF /* testUI */ = {
+			isa = PBXGroup;
+			children = (
+				11B0CDC41E7BFF800074A5AF /* uiCollectionViewTest.swift */,
+				11D8877F1E6A8CD2001D78DF /* uiviewTest.swift */,
+			);
+			name = testUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,12 +214,14 @@
 				11C79CA61E67F4C0004A060E /* avPlayer2.swift in Sources */,
 				114D250C1E543A4F00892612 /* caLayer.swift in Sources */,
 				11D8877E1E69A27A001D78DF /* screenShot.swift in Sources */,
+				11B0CDC51E7BFF800074A5AF /* uiCollectionViewTest.swift in Sources */,
 				110D72531E66E34400B7E095 /* CoreImageFilter.swift in Sources */,
 				11C79CA81E68337A004A060E /* videoCapeture.swift in Sources */,
 				11365AC61E77827700F476E8 /* nsUserDefaultsTest.swift in Sources */,
 				11D887801E6A8CD2001D78DF /* uiviewTest.swift in Sources */,
 				114D24F81E53FEB000892612 /* AppDelegate.swift in Sources */,
 				114562151E72636E0048999A /* bezierTest.swift in Sources */,
+				11B0CDC91E7D4F450074A5AF /* cameraTest.swift in Sources */,
 				1148F0611E6AD6BA009E3853 /* GradientLayerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

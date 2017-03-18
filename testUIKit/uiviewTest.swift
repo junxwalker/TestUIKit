@@ -21,7 +21,6 @@ class uiviewTest: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
 
-
         
         
         createGradientLayer()
@@ -115,6 +114,9 @@ class Test_View: UIView {
         bpath.fill()            //渲染填充部分
         
         NSLog("drawRect has updated the view")
+        
+       // let a = UIImage(named: "002185")
+       // a?.draw(in:  rect)
         
     }
     
