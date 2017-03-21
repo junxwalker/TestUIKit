@@ -47,13 +47,15 @@ class presentVC_Test: UIViewController, UIViewControllerTransitioningDelegate {
     // 声明一个动画实例
     private let transition = FadeAnimator()
     
+    //进入下一级VC是调用
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return transition
     }
     
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return transition
-    }
+    //回到之前VC调用
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return transition
+//    }
     
     
     func onClickMyButton(sender: UIButton){

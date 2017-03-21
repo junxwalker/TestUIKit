@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        let vc = cameraTest()
+        let vc = presentVC_Test()
         self.view.addSubview(vc.view)
         self.addChildViewController(vc)
     }
