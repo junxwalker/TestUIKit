@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        let vc = presentVC_Test()
+        let vc = uiLabelTest()
         self.view.addSubview(vc.view)
         self.addChildViewController(vc)
     }
