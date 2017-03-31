@@ -17,68 +17,80 @@ import Foundation
 
 import UIKit
 
-class uiCollectionViewTest: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
+
+
+
+
+
+class uiCollectionViewTest: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     var myCollectionView : UICollectionView!
-    
+    var iTemVC = [UIViewController]()
+    var delegate:uiCollectionViewTest?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 建立 UICollectionViewFlowLayout
+    }
+    
+    func initViewFor(storyboard sbd:[String], iTemWidth width:Double, iTemHeight height:Double) {
+
         let layout = UICollectionViewFlowLayout()
-        
-        // 設置每個 cell 的尺寸
-        layout.itemSize = CGSize(width:50, height:50)
-        
-        // 設置 section 的間距 四個數值分別代表 上、左、下、右 的間距
-        layout.sectionInset = UIEdgeInsetsMake(16, 16, 32, 16)
-        
-        // 設置 header 的尺寸
-        layout.headerReferenceSize = CGSize(width:100,height:30)
-        
-        // 建立 UICollectionView
-        myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        
-        // 註冊 cell 以供後續重複使用
+        layout.itemSize = CGSize(width:width, height:height)
+        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        layout.scrollDirection = .horizontal
+        let fr = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        myCollectionView = UICollectionView(frame: fr, collectionViewLayout: layout)
         myCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-        
-        // 設置委任對象
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
         
+        myCollectionView.isPagingEnabled = true
+        
         self.view.addSubview(myCollectionView)
         
+        sbd.map { (sdbName) in
+            addItemFor(storyboard: sdbName, iTemWidth: width, iTemHeight: height)
+        }
     }
     
-    /*
-     點擊 CELL
-     */
+    func addItemFor(storyboard sbd:String, iTemWidth width:Double, iTemHeight height:Double) {
+        let item:UIViewController = UIStoryboard(name: sbd, bundle: nil).instantiateViewController(withIdentifier: sbd)
+        item.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        iTemVC.append(item)
+        self.addChildViewController(item)
+    }
+    
+    func doSomeThing() {
+        print("doSomeThing --- ", self.description)
+        //myCollectionView.setContentOffset(<#T##contentOffset: CGPoint##CGPoint#>, animated: <#T##Bool#>)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let point = scrollView.contentOffset
+        print("svds: ",self.description, point)
+        self.delegate?.doSomeThing()
+        //self.delegate?.myCollectionView.setContentOffset(point, animated: false)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (iTemVC.count)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell : UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath)
+        cell.addSubview((iTemVC[indexPath.row].view)!)
+        return cell
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         print("Num: \(indexPath.row)")
         print("Value:\(collectionView)")
-        
-    }
-    
-    /*
-     回傳 section 區段 的 cell 數目
-     */
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
-    }
-    
-    /*
-     Cell 內容設定
-     */
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell : UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell",
-                                                                             for: indexPath as IndexPath)
-        
-        cell.backgroundColor = UIColor.orange
-        return cell
     }
     
 }
+
+
+
 
 

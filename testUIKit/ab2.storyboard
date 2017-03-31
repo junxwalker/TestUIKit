@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="DMh-mG-kSe">
+            <objects>
+                <viewController storyboardIdentifier="ab2" id="E81-d2-dQw" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pyp-q0-nPA"/>
+                        <viewControllerLayoutGuide type="bottom" id="z5G-Jd-2QI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JE6-jH-Jxm">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="00002" translatesAutoresizingMaskIntoConstraints="NO" id="6bJ-OY-yrJ">
+                                <rect key="frame" x="16" y="8" width="32" height="32"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bp-WQ-BaG">
+                                <rect key="frame" x="56" y="15" width="30" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="W0L-1X-nZC"/>
+                                    <constraint firstAttribute="width" constant="30" id="tvQ-GG-WNc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z5G-Jd-2QI" firstAttribute="top" secondItem="6bJ-OY-yrJ" secondAttribute="bottom" constant="10" id="467-cy-kbB"/>
+                            <constraint firstItem="1bp-WQ-BaG" firstAttribute="leading" secondItem="6bJ-OY-yrJ" secondAttribute="trailing" constant="8" id="4jQ-2h-z9F"/>
+                            <constraint firstItem="6bJ-OY-yrJ" firstAttribute="leading" secondItem="JE6-jH-Jxm" secondAttribute="leadingMargin" id="DDs-0I-GcR"/>
+                            <constraint firstItem="1bp-WQ-BaG" firstAttribute="top" secondItem="pyp-q0-nPA" secondAttribute="bottom" constant="15" id="KKl-nr-nZ5"/>
+                            <constraint firstItem="6bJ-OY-yrJ" firstAttribute="top" secondItem="pyp-q0-nPA" secondAttribute="bottom" constant="8" id="X9f-gy-FUo"/>
+                            <constraint firstItem="z5G-Jd-2QI" firstAttribute="top" secondItem="1bp-WQ-BaG" secondAttribute="bottom" constant="14" id="fAU-48-fNv"/>
+                            <constraint firstAttribute="trailing" secondItem="1bp-WQ-BaG" secondAttribute="trailing" constant="14" id="t5V-Oa-wo0"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="100" height="50"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fno-ce-OQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-472" y="536.13193403298351"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="00002" width="128" height="128"/>
+    </resources>
+</document>

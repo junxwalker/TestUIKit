@@ -26,10 +26,20 @@ class uiviewTest: UIViewController {
         createGradientLayer()
 
         
+        //f.backgroundColor = UIColor.blue
 
+        //f.layer.shouldRasterize = true
         
+        //UIViewAnimation4()
         self.view.addSubview(f)
-        f.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
+        f.layer.cornerRadius = 5
+        
+        let tt = UILabel()
+        tt.text = "12345"
+        tt.textColor = UIColor.blue
+        tt.frame = CGRect(x: 0, y: 0, width: 60, height: 10)
+        f.addSubview(tt)
+        //f.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
  
         /*
         CATransaction.begin()
@@ -37,6 +47,20 @@ class uiviewTest: UIViewController {
         grad.locations = [0, 0.1, 1]
         CATransaction.commit()
          */
+        
+
+        print("viewDidLoad")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("viewDidAppear")
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,6 +77,19 @@ class uiviewTest: UIViewController {
         gradientLayer.colors = [ UIColor.red.cgColor,UIColor.green.cgColor,UIColor.blue.cgColor]
         
         self.view.layer.addSublayer(gradientLayer)
+    }
+    
+    
+    func UIViewAnimation4(){
+        UIView.animate(withDuration: 2, delay: 2, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: [ .repeat, .autoreverse], animations: {
+            
+            //注意:对于有圆角的视图,改变大小而不改变形状,只能通过形变去缩放,不能改变frame的size就改变大小
+            //self.subView.transform = CGAffineTransformRotate(CGAffineTransformMakeTranslation(0, -240), CGFloat(M_PI_2))
+            self.f.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            
+        }, completion: nil)
+        
+        
     }
     
 }
@@ -104,7 +141,6 @@ class Test_View: UIView {
         let drect = rect
         let bpath:UIBezierPath = UIBezierPath(rect: drect)
         
-        //下面这几个属性要用在UIView中重写drawRect:方法中使用才有效，否则不会出现效果
         
         color.set()             //设定要画的颜色
         bpath.lineWidth  = 5 //路径宽度
@@ -114,6 +150,11 @@ class Test_View: UIView {
         bpath.fill()            //渲染填充部分
         
         NSLog("drawRect has updated the view")
+        
+        
+        
+        //let context = UIGraphicsGetCurrentContext()
+        //con
         
        // let a = UIImage(named: "002185")
        // a?.draw(in:  rect)
